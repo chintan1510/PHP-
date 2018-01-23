@@ -83,6 +83,7 @@
 			color:red;
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -104,7 +105,7 @@
 ?>	
 	
 	
-	<h1 style="text-align: center;">Register here :</h1>
+	<h3 style="text-align: center;margin-top: 10px;">REGISTER HERE</h3><br>
 	<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" style="text-align: center;">
 		First Name : <input type="text" name="fname" value="<?php echo isset($fname) ? $fname : ''; ?>" >
 		<span class="error"><?php
@@ -143,9 +144,9 @@
 		}
 		?></span>
 		<br><br>
-		<input type="submit" name="register" value="Register" />
+		<input class="btn btn-info" type="submit" name="register" value="Register" />
 		<br><br>
-		<h4>Already a user?<h4><a href="login.php">Login</a> 
+		<h4>Already a user?<h4><a class="btn btn-info" href="login.php">Login</a> 
 	</form>
 	</body>
 </html>

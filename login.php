@@ -6,16 +6,17 @@
 <head>
 	<title>Login page</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 <body>
 
-	<h1 style="text-align: center;">Login</h1>
+	<h1 style="text-align: center;margin-top: 10px;">Login</h1><br><br>
 
 	<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" style="text-align: center;">
 	Username : <input type="text" name="uname"/><br><br>
 	Password : <input type="password" name="pwd"/><br><br>
-	<input type="submit" name="login" value="Login"/>
-	</form>
+	<input class="btn btn-info" type="submit" name="login" value="Login"/>
+	</form><br><br>
 
 <?php
 session_start();
@@ -67,6 +68,9 @@ if(isset($_POST["login"]))
 	}	
 }
 ?>
+
+
+<p style="text-align: center;"><label>Don't have an account?&nbsp;&nbsp;</label><a class="btn btn-info" href="register.php">Signup</a></p>
 
 </body>
 </html>

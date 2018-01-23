@@ -5,6 +5,35 @@
 <head>
 	<title>Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+	<script type="text/javascript">
+		function loadDoc() {
+				
+    				 if (window.XMLHttpRequest) {
+            
+            			xmlhttp = new XMLHttpRequest();
+        				}	
+
+        		 		else 
+        		 		{
+                      		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        				}
+    			
+				//var xhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+
+				if(this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById("display_user_details").innerHTML = this.responseText;
+				}
+			};
+
+			xmlhttp.open("GET","display_details.php",true);
+			xmlhttp.send();	
+		}
+	
+	</script>
+
 </head>
 <body>
 
@@ -21,7 +50,7 @@ echo "<p>".$_SESSION['fname']." ".$_SESSION['lname']."</p>";
 if($status == 1)
 {
 
-	$results_per_page = 2;
+	/*$results_per_page = 2;
 
 	// find out the number of results stored in database
 	$sql='SELECT * FROM register_user';
@@ -88,7 +117,7 @@ for ($page=1;$page<=$number_of_pages;$page++) {
   echo '<a href="index.php?page=' . $page . '" class="btn btn-info">' . $page . '</a> ';
 }
 
-echo "<br><br>";
+echo "<br><br>";*/
 
 
 
@@ -96,6 +125,13 @@ echo "<br><br>";
 	// echo "<form action='index.php?page={$_GET['page']}' method='POST'>";
 	// echo "<input type='submit' name='submit'>";
 	// echo "</form>";
+
+?>
+<div id="display_user_details"></div>
+
+<button type="button" onclick="loadDoc()">View user details</button>	
+<?php
+
 
 } else
 {
@@ -142,7 +178,7 @@ echo "<br><br>";
 //if (isset($_POST['submit'])) {
 
 	// define how many results you want per page
-	
+
 
 }
 else
@@ -150,6 +186,13 @@ else
 	header('Location:register.php');
 }
 ?>
+
+
+
+
+
+
+
 
 
 </body>

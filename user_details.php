@@ -9,6 +9,14 @@
 <?php
 
 session_start();
+
+if(isset($_SESSION['uname']))
+{
+
+$status = $_SESSION['status'];
+echo "<h3 style='display:inline;'>Welcome</h3>";
+echo "<a style='float:right;margin-right:20px;' href='logout.php' >Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
+echo "<p>".$_SESSION['fname']." ".$_SESSION['lname']."</p>";
 //$uri = $_SERVER['REQUEST_URI'];
 //echo $uri;
 
@@ -71,7 +79,11 @@ if(mysqli_num_rows($result)>0)
 
 echo "<a class='btn btn-info' href='index.php'>Back</a>";
 
-
+}
+else
+{
+	header('Location:register.php');
+}
 
 ?>
 
