@@ -5,19 +5,21 @@
 </head>
 <body>
 
-<form action="">
+<form action="session_display.php" method="POST">
 	Uname:<input type="text" name="uname">
 	PWD :<input type="password" name="pwd">
-	<input type="submit" name="submit">
+
+	<input type="submit" name="submit" value="submit">
+	<input type="submit" name="submit1" value="submit1">
 </form>
 
-<?php
+<!-- <?php
 
-if($_REQUEST['submit'])
+//if($_REQUEST['submit'])
 {
-	print_r($_GET);
+	//print_r($_GET);
 }
-?>
+?> -->
 
 </body>
 </html>

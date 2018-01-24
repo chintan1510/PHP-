@@ -14,6 +14,7 @@
 			$dob = $_POST["dob"];
 			$uname = $_POST["uname"];
 			$pwd = $_POST["pwd"];
+			$regex = '/^[6-9]\d{9}$/';
 			$error = [
 
 				'fname'	=> '',
@@ -27,16 +28,20 @@
 			{
 				$error['fname'] = "First name is required";
 			}
-			elseif (empty($email)) {
+			if (empty($email)) {
 				$error['email'] = "Email id required";
 			}
-			elseif (empty($mob)) {
+			if (empty($mob)) {
 				$error['mob'] = "Mobile number is required";
 			}
-			elseif (empty($uname)) {
+			elseif(!preg_match($regex,$mob))
+			{
+				$error['mob'] = "Enter a valid mobile number";
+			}
+			if (empty($uname)) {
 				$error['uname'] = "Username is required";
 			}
-			elseif (empty($pwd)) {
+			if (empty($pwd)) {
 				$error['pwd'] = "Password is required";
 			}
 			else{

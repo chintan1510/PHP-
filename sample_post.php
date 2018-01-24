@@ -13,7 +13,7 @@
       <?php echo "Set Cookies";
 		echo $_COOKIE["name"]. "<br />";
 		print_r($_POST);
-		$_SESSION['name']=$_POST['uname'];
+      echo $_SESSION['name'];
       ?>
 
 

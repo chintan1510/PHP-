@@ -186,14 +186,5 @@ else
 	header('Location:register.php');
 }
 ?>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
