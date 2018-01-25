@@ -127,9 +127,11 @@ echo "<br><br>";*/
 	// echo "</form>";
 
 ?>
-<div id="display_user_details"></div>
 
-<button type="button" onclick="loadDoc()">View user details</button>	
+
+<button type="button" onclick="loadDoc()">View user details</button><br><br>	
+
+<div id="display_user_details"></div>
 <?php
 
 

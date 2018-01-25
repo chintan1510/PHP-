@@ -19,4 +19,9 @@ echo $a;
 echo array_sum($names);
 
 
+for($j=0;$j<$alength;$j++)
+{
+echo "<h1 style='display:inline;'>Hello</h1>";
+}
+
 ?>

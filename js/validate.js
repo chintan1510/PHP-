@@ -1,0 +1,56 @@
+function check_user(str)
+		{
+			if(str=="")
+			{
+				document.getElementById('uname').innerHTML="";
+				return;
+			}
+			if(window.XMLHttpRequest)
+			{
+				xmlhttp = new XMLHttpRequest();
+			}
+			else
+			{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById('uname').innerHTML = this.responseText;
+				}
+			};
+
+			xmlhttp.open("GET","checkuser.php?q="+str,true);
+			xmlhttp.send();
+		}
+
+
+
+function check_email(str)
+		{
+			if(str=="")
+			{
+				document.getElementById('email').innerHTML="";
+				return;
+			}
+			if(window.XMLHttpRequest)
+			{
+				xmlhttp = new XMLHttpRequest();
+			}
+			else
+			{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById('email').innerHTML=this.responseText;
+				}
+			};
+
+			xmlhttp.open("GET","checkemail.php?q="+str,true);
+			xmlhttp.send();
+		}
+
+
+

@@ -34,7 +34,7 @@
 			if (empty($mob)) {
 				$error['mob'] = "Mobile number is required";
 			}
-			elseif(!preg_match($regex,$mob))
+			if(!preg_match($regex,$mob))
 			{
 				$error['mob'] = "Enter a valid mobile number";
 			}
@@ -44,8 +44,29 @@
 			if (empty($pwd)) {
 				$error['pwd'] = "Password is required";
 			}
+
 			else{
+
+
+			// if (empty($error)) {
 			
+
+			/*$fetch_users = "SELECT email from register_user";
+			$result = mysqli_query($conn,$fetch_users);
+			if(mysqli_num_rows($result)>0)
+			{
+				while($row = mysqli_fetch_assoc($result))
+				{
+					if($email == $row['email'])
+					{
+							echo "<script type='text/javascript'>";
+							echo	"window.alert('Already a user');";
+							echo	"window.location = 'login.php';";
+							echo "</script>";	
+							break;
+					}
+				}
+			}*/
 			$pwd = md5($pwd);
 			$fetch_admin_details = "SELECT mob FROM admin_details";
 			echo "test1";
@@ -64,15 +85,28 @@
 							$status = 1;
 							break;
 						}
-				}
 
+				}
 			}	
 		$sql = "INSERT INTO register_user (fname,lname,email,mob,dob,uname,pwd,status) VALUES ('{$fname}', '{$lname}', '{$email}', '{$mob}', '{$dob}', '{$uname}', '{$pwd}','{$status}')";
-		$query = mysqli_query($conn, $sql);	
-		header('Location:login.php');	
+		$query = mysqli_query($conn, $sql);
+		if (!$query) {
+				//die(mysqli_error($conn));
+				echo "<script type='text/javascript'>";
+							echo	"window.alert('Already a user');";
+							echo	"window.location = 'login.php';";
+							echo "</script>";
 			}
-			
-	}
+			else{
+
+				echo "<script type='text/javascript'>";
+							echo	"window.alert('Registered successfully');";
+							echo	"window.location = 'login.php';";
+							echo "</script>";	
+			}	
+				
+			}
+			}
 
 	 ?>
 
@@ -82,13 +116,8 @@
 <head>
 	<title>Registration page</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<style type="text/css">
-		span
-		{
-			color:red;
-		}
-	</style>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+	<script type="text/javascript" src="/js/validate.js"></script>
 </head>
 <body>
 
@@ -120,8 +149,8 @@
 		?></span>
 		<br><br>
 		Last Name :  <input type="text" name="lname" value="<?php echo isset($lname) ? $lname : ''; ?>"/><br><br>
-		Email Id :   <input type="emailfnameErr" name="email" value="<?php echo isset($email) ? $email : ''; ?>"/>
-		<span class="error"><?php
+		Email Id :   <input type="emailfnameErr" name="email" value="<?php echo isset($email) ? $email : ''; ?>" onkeyup="check_email(this.value)" />
+		<span id="email" class="error"><?php
 		if (isset($error['email'])) {
 			echo $error['email'];
 		}
@@ -135,8 +164,8 @@
 		?></span>
 		<br><br>
 		Date of birth : <input type="date" name="dob" value="<?php echo isset($dob) ? $dob : ''; ?>" /><br><br>
-		Username : <input type="text" name="uname" value="<?php echo isset($uname) ? $uname : ''; ?>"/>
-		<span class="error"><?php
+		Username : <input type="text" name="uname" value="<?php echo isset($uname) ? $uname : ''; ?>" onkeyup="check_user(this.value)"/>
+		<span id="uname" class="error"><?php
 		if (isset($error['uname'])) {
 			echo $error['uname'];
 		}

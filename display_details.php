@@ -10,12 +10,21 @@
 
 <?php
 
+
+
 	include './config_mysqli.php' ; 
 	session_start();
 
+	if(isset($_SESSION['uname']))
+	{
+	if(isset($_GET['page']))
+	{
 
-	
-	$results_per_page = 2;
+	echo "<h3 style='display:inline;'>Welcome</h3>";
+    echo "<a style='float:right;margin-right:20px;' href='logout.php' >Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
+    echo "<p>".$_SESSION['fname']." ".$_SESSION['lname']."</p>";	
+	}
+	$results_per_page = 3;
 
 	// find out the number of results stored in database
 	$sql='SELECT * FROM register_user';
@@ -36,7 +45,7 @@
 	$page;
 	$this_page_first_result = ($page-1)*$results_per_page;
 
-	echo $query = 'SELECT * FROM register_user LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+	$query = 'SELECT * FROM register_user LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
 	$result = mysqli_query($conn,$query);
 
 
@@ -54,6 +63,7 @@
       </tr>
     </thead>
     <tbody>
+    	
 
     	<?php
 
@@ -73,21 +83,37 @@
 			echo '</tr>';
 		}
 
+?>
+
+	</tbody>
+	</table>
+
+<?php
 		
 	}
 
 	// display the links to the pages
+	for ($page=1;$page<=$number_of_pages;$page++) {
+  echo '<div style="display:inline;float:center;"><a href="display_details.php?page=' . $page . '" class="btn btn-info">' . $page . '</a> ';
+}
+//echo "<br><br>";
+?>
+<a  class="btn btn-info" href="index.php">Back</a>
+</div>
+
+
+<?php
 
 
 
-for ($page=1;$page<=$number_of_pages;$page++) {
-  echo '<a href="index.php?page=' . $page . '" class="btn btn-info">' . $page . '</a> ';
+}
+else
+{
+
+	header('Location:register.php');
 }
 
-echo "<br><br>";
 ?>
-
-
 
 </body>
 </html>
