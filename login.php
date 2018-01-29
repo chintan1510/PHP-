@@ -42,7 +42,7 @@ if(isset($_POST["login"]))
 				$_SESSION['dob'] = $row['dob'];
 				$_SESSION['uname'] = $row['uname'];*/
 				$_SESSION['status'] = $row['status'];
-				header('Location:index.php');
+				header('Location:index2.php');
 			}
 			/*elseif($row['uname']==$uname && $row['pwd']==$pwd)//&&row['status']==1)
 			{

@@ -77,7 +77,7 @@ if(mysqli_num_rows($result)>0)
 
 }
 
-echo "<a class='btn btn-info' href='index.php'>Back</a>";
+echo "<a class='btn btn-info' href='index2.php'>Back</a>";
 
 }
 else

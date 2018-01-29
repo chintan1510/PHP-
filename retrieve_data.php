@@ -145,39 +145,34 @@ echo "<br><br>";*/
 	{
 		?>
 
-		<table class="table">
-    <thead>
-      <tr>
-      	<th>Profile photo</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+
+		<ul class="users">
+			
+		
 
     	<?php
 
 		while($row = mysqli_fetch_assoc($result1))
 		{	
-			echo '<tr>';
+			echo "<li>";
 			$id = $row['id'];
 			$first_name = $row['fname'];
 			$last_name = $row['lname'];
 			$email = $row['email'];
 			$uname = $row['uname'];
 			$image = $row['photo'];
- 			echo "<td>";
  			echo "<img src='/images/$image' width='100' height='100'>";
- 			echo "</td>";
-			echo "<td>$first_name</td>";
-			echo "<td>$last_name</td>";
-			echo "<td>$email</td>";
-			echo "<td><a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a></td>";
-			echo '</tr>';
+			echo "$first_name";
+			echo "$last_name";
+			echo "$email";
+			echo "<a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a>";
+			echo "</li>";
 		}
 	}
+
+	?>
+	</ul>
+	<?php
 
 
 }

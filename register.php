@@ -21,7 +21,9 @@
 				'email' => '',
 				'mob'   => '',
 				'uname'	=> '',
-				'pwd'   => ''
+				'pwd'   => '',
+				'f_ext' => '',
+				'f_size' => ''
 			];
 
 			if(empty($fname))
@@ -44,7 +46,7 @@
 			if (empty($pwd)) {
 				$error['pwd'] = "Password is required";
 			}
-
+			
 			else{
 
 
@@ -67,7 +69,43 @@
 					}
 				}
 			}*/
-			$pwd = md5($pwd);
+			
+			
+			if(isset($_FILES['uploadimage']))
+			{
+				//$upload_errors = array();
+				$file_name = $_FILES['uploadimage']['name'];
+				$file_size = $_FILES['uploadimage']['size'];
+				$file_tmp  = $_FILES['uploadimage']['tmp_name'];
+				$file_type = $_FILES['uploadimage']['type'];
+				$file_ext  = strtolower(end(explode('.',$_FILES['uploadimage']['name'])));
+				$file_dest = "../task1/images/".$file_name;
+				$extensions = array("jpg","jpeg","png","gif");
+				if(in_array($file_ext,$extensions) === false)
+				{
+					echo $error['f_ext'] = "File extension not allowed.Use either of .jpg,.jpeg,.png,.gif extensions";
+				}
+				if($file_size > 10000000) 
+				{
+      			   echo $error['f_size']='File size must be less than 10 MB';
+      			}
+      			if($error['f_ext'] == "" && $error['f_size'] == "")
+      			{
+      				if(move_uploaded_file($file_tmp,$file_dest))
+      				{
+      					echo "success";
+      				}
+      				else
+      				{
+      					echo "File not uploaded";
+      				}
+      			}
+			}
+			else
+			{
+				$file_name = "default.png"; }
+
+							$pwd = md5($pwd);
 			$fetch_admin_details = "SELECT mob FROM admin_details";
 			echo "test1";
 			$fetch_exec = mysqli_query($conn,$fetch_admin_details);
@@ -87,8 +125,11 @@
 						}
 
 				}
-			}	
-		$sql = "INSERT INTO register_user (fname,lname,email,mob,dob,uname,pwd,status) VALUES ('{$fname}', '{$lname}', '{$email}', '{$mob}', '{$dob}', '{$uname}', '{$pwd}','{$status}')";
+			}
+
+
+
+		$sql = "INSERT INTO register_user (fname,lname,email,mob,dob,photo,uname,pwd,status) VALUES ('{$fname}', '{$lname}', '{$email}', '{$mob}', '{$dob}','{$file_name}','{$uname}', '{$pwd}','{$status}')";
 		$query = mysqli_query($conn, $sql);
 		if (!$query) {
 				//die(mysqli_error($conn));
@@ -103,9 +144,10 @@
 							echo	"window.alert('Registered successfully');";
 							echo	"window.location = 'login.php';";
 							echo "</script>";	
-			}	
-				
+			} 	
 			}
+				
+				
 			}
 
 	 ?>
@@ -140,7 +182,7 @@
 	
 	
 	<h3 style="text-align: center;margin-top: 10px;">REGISTER HERE</h3><br>
-	<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" style="text-align: center;">
+	<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" style="text-align: center;" enctype="multipart/form-data">
 		First Name : <input type="text" name="fname" value="<?php echo isset($fname) ? $fname : ''; ?>" >
 		<span class="error"><?php
 		if (isset($error['fname'])) {
@@ -164,6 +206,16 @@
 		?></span>
 		<br><br>
 		Date of birth : <input type="date" name="dob" value="<?php echo isset($dob) ? $dob : ''; ?>" /><br><br>
+		<input type="file" name="uploadimage">
+		<span class="error"><?php
+		if (isset($error['f_ext'])) {
+			echo $error['f_ext'];
+		}
+		elseif(isset($error['f_size'])) {
+			echo $error['f_size'];
+		}
+		?></span>
+		<br><br>
 		Username : <input type="text" name="uname" value="<?php echo isset($uname) ? $uname : ''; ?>" onkeyup="check_user(this.value)"/>
 		<span id="uname" class="error"><?php
 		if (isset($error['uname'])) {
@@ -180,7 +232,7 @@
 		<br><br>
 		<input class="btn btn-info" type="submit" name="register" value="Register" />
 		<br><br>
-		<h4>Already a user?<h4><a class="btn btn-info" href="login.php">Login</a> 
+		<h4>Already a user?<h4><a class="btn btn-info" href="login.php">Login</a></h4> 
 	</form>
 	</body>
 </html>

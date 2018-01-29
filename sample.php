@@ -24,4 +24,8 @@ for($j=0;$j<$alength;$j++)
 echo "<h1 style='display:inline;'>Hello</h1>";
 }
 
+
+$a = "ABC";
+echo "Hi $a";
+
 ?>
