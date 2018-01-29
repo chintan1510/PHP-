@@ -29,7 +29,7 @@
 				}
 			};
 
-			xmlhttp.open("GET","display_details.php",true);
+			xmlhttp.open("GET","display_details2.php",true);
 			xmlhttp.send();	
 		}
 	
