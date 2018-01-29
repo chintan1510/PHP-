@@ -105,7 +105,7 @@
 			{
 				$file_name = "default.png"; }
 
-							$pwd = md5($pwd);
+			$pwd = md5($pwd);
 			$fetch_admin_details = "SELECT mob FROM admin_details";
 			echo "test1";
 			$fetch_exec = mysqli_query($conn,$fetch_admin_details);

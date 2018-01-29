@@ -32,6 +32,7 @@ while($row = mysqli_fetch_array($result)) {
   echo $row['id'] . '<br>' . $row['fname'] . ' <br> ' . $row['lname']. '<br>' . '-------------------------' . '<br>';
 }
 // display the links to the pages
+
 for ($page=1;$page<=$number_of_pages;$page++) {
   echo '<a href="PaginationMySQL.php?page=' . $page . '">' . $page . '</a> ';
 }
