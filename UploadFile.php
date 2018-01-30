@@ -18,16 +18,8 @@
       }
       
       if(empty($errors)==true) {
-         if(move_uploaded_file($file_tmp,"../task1/uploads/".$file_name))
-         //echo dirname("push_notification.png");
+         move_uploaded_file($file_tmp,"images/".$file_name);
          echo "Success";
-         }
-         else
-         {
-            echo $file_tmp;
-            echo "var/www/html/task1/uploads/".$file_name;
-            echo "File not uploaded";
-         }
       }else{
          print_r($errors);
       }
@@ -39,13 +31,13 @@
       <form action = "" method = "POST" enctype = "multipart/form-data">
          <input type = "file" name = "image" />
          <input type = "submit"/>
-			
+         
          <ul>
             <li>Sent file: <?php echo $_FILES['image']['name'];  ?>
             <li>File size: <?php echo $_FILES['image']['size'];  ?>
-            <li>File type: <?php echo $_FILES['image']['type']; ?>
+            <li>File type: <?php echo $_FILES['image']['type'] ?>
          </ul>
-			
+         
       </form>
       
    </body>

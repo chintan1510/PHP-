@@ -3,7 +3,9 @@
 <head>
 	<title>Display user details</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive_display.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/css/responsive_display.css"> -->
+	<link rel="stylesheet" type="text/css" href="/css/responsive_grid.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -25,7 +27,7 @@
     echo "<a style='float:right;margin-right:20px;' href='logout.php' >Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
     echo "<p>".$_SESSION['fname']." ".$_SESSION['lname']."</p>";	
 	}
-	$results_per_page = 3;
+	$results_per_page = 6;
 
 	// find out the number of results stored in database
 	$sql='SELECT * FROM register_user';
@@ -43,21 +45,24 @@
 	}
 
 	// determine the sql LIMIT starting number for the results on the displaying page
-	$page;
+	
 	$this_page_first_result = ($page-1)*$results_per_page;
 
 	?>
 
-	<div class="row">
+	<!-- <div class="row">
 
 		<div class="col-4">    
-		<ul>
-
+		<ul style="display: inline-block;list-style: none;">
+ -->
 	<?php		
-	$query = 'SELECT fname,lname,email,photo,uname FROM register_user where id between 28 and 32 LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+	$query = 'SELECT fname,lname,email,photo,uname FROM register_user LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
 	$result = mysqli_query($conn,$query);
 
-
+	?>
+	<div class="container">
+	<ul class="floating-box">
+	<?php	
 	if(mysqli_num_rows($result)>0)
 	{
 		while($row = mysqli_fetch_assoc($result))
@@ -68,26 +73,36 @@
 			$last_name = $row['lname'];
 			$email = $row['email'];
 			$image = $row['photo'];
-			/*echo "<div style='float:right;'>";*/
+			//echo "<div class='container'>";
+			//echo "<ul>";
 			echo "<li>";
-			echo "<img src='images/$image' width='100' height='100'>";
+			echo "<img src='images/$image' width='100' height='100'><br>";
+			//echo "</li>";
+			//echo "<li>";
+			echo $first_name." ".$last_name."<br>";
+			//echo "</li>";
+			//echo "<li>";
+			echo $email."<br>";
+			//echo "</li>";
+			//echo "<li>";
+			echo "<a href='user_details2.php?user=$uname' class='btn btn-info'>Other info</a>";
 			echo "</li>";
-			echo "<li>";
-			echo $first_name." ".$last_name;
-			echo "</li>";
-			echo "<li>";
-			echo $email;
-			echo "</li>";
-			echo "<li>";
-			echo "<a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a>";
-			echo "</li>";
+			//echo "</ul>";
 			//echo "</div>";
+
+			//echo "</li>";
+			//echo "<br>";
+			
 		}
 
 ?>
 
-	</ul>
+</ul>
 </div>
+
+<!-- 	</ul>
+</div>
+</div> -->
 
 
 
@@ -95,113 +110,20 @@
 		
 	}
 
-?>
 
-		<div class="col-4">    
-		<ul>
-
-	<?php		
-	$query = 'SELECT fname,lname,email,photo,uname FROM register_user where id between 28 and 32 LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
-	$result = mysqli_query($conn,$query);
-
-
-	if(mysqli_num_rows($result)>0)
-	{
-		while($row = mysqli_fetch_assoc($result))
-		{
-
-			$uname = $row['uname'];
-			$first_name = $row['fname'];
-			$last_name = $row['lname'];
-			$email = $row['email'];
-			$image = $row['photo'];
-			/*echo "<div style='float:right;'>";*/
-			echo "<li>";
-			echo "<img src='images/$image' width='100' height='100'>";
-			echo "</li>";
-			echo "<li>";
-			echo $first_name." ".$last_name;
-			echo "</li>";
-			echo "<li>";
-			echo $email;
-			echo "</li>";
-			echo "<li>";
-			echo "<a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a>";
-			echo "</li>";
-			//echo "</div>";
-		}
-
-?>
-
-	</ul>
-</div>
-
-
-
-<?php
 		
-	}
-
-?>
-
-<div class="col-4">    
-		<ul>
-
-	<?php		
-	$query = 'SELECT fname,lname,email,photo,uname FROM register_user where id between 28 and 32 LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
-	$result = mysqli_query($conn,$query);
-
-
-	if(mysqli_num_rows($result)>0)
-	{
-		while($row = mysqli_fetch_assoc($result))
-		{
-
-			$uname = $row['uname'];
-			$first_name = $row['fname'];
-			$last_name = $row['lname'];
-			$email = $row['email'];
-			$image = $row['photo'];
-			/*echo "<div style='float:right;'>";*/
-			echo "<li>";
-			echo "<img src='images/$image' width='100' height='100'>";
-			echo "</li>";
-			echo "<li>";
-			echo $first_name." ".$last_name;
-			echo "</li>";
-			echo "<li>";
-			echo $email;
-			echo "</li>";
-			echo "<li>";
-			echo "<a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a>";
-			echo "</li>";
-			//echo "</div>";
-		}
-
-?>
-
-	</ul>
-</div>
-</div>
-
-
-<?php
-		
-	}
 
 	// display the links to the pages
 	for ($page=1;$page<=$number_of_pages;$page++) {
-  echo '<div style="display:inline;float:center;"><a href="display_details2.php?page=' . $page . '" class="btn btn-info">' . $page . '</a> ';
+  echo '<br><div style="display:inline-flex;margin-right:3px;"><a style="" href="display_details2.php?page=' . $page . '" class="btn btn-info">' . $page . '</a> ';
 }
 //echo "<br><br>";
 ?>
-<a  class="btn btn-info" href="index.php">Back</a>
+<a  class="btn btn-info" href="index2.php">Back</a>
 </div>
 
 
 <?php
-
-
 
 }
 else

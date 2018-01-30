@@ -79,6 +79,7 @@
 				$file_tmp  = $_FILES['uploadimage']['tmp_name'];
 				$file_type = $_FILES['uploadimage']['type'];
 				$file_ext  = strtolower(end(explode('.',$_FILES['uploadimage']['name'])));
+				$file_name = uniqid().".".$file_ext;
 				$file_dest = "../task1/images/".$file_name;
 				$extensions = array("jpg","jpeg","png","gif");
 				if(in_array($file_ext,$extensions) === false)
