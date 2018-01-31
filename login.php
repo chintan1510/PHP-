@@ -37,10 +37,10 @@ if(isset($_POST["login"]))
 				$_SESSION['fname'] = $row['fname'];
 				$_SESSION['lname'] = $row['lname'];
 				$_SESSION['uname'] = $row['uname'];
-				/*$_SESSION['email'] = $row['email'];
+				$_SESSION['email'] = $row['email'];
 				$_SESSION['mob'] = $row['mob'];
 				$_SESSION['dob'] = $row['dob'];
-				$_SESSION['uname'] = $row['uname'];*/
+				$_SESSION['uname'] = $row['uname'];
 				$_SESSION['status'] = $row['status'];
 				header('Location:index2.php');
 			}

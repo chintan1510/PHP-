@@ -4,8 +4,8 @@
 <html>
 <head>
 	<title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="/css/responsive_grid.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<script type="text/javascript">
@@ -170,7 +170,7 @@ echo "<br><br>";*/
 			$uname = $row['uname'];
 			$image = $row['photo'];
  			echo "<td>";
- 			echo "<img src='/images/$image' width='100' height='100'>";
+ 			echo "<img src='/images/100x100/$image'>";
  			echo "</td>";
 			echo "<td>$first_name</td>";
 			echo "<td>$last_name</td>";

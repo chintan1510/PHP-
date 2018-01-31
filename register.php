@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php include './config_mysqli.php';?>
+<?php include './functions.php'; ?>
 
 <?php 
 		
@@ -80,7 +81,7 @@
 				$file_type = $_FILES['uploadimage']['type'];
 				$file_ext  = strtolower(end(explode('.',$_FILES['uploadimage']['name'])));
 				$file_name = uniqid().".".$file_ext;
-				$file_dest = "../task1/images/".$file_name;
+				$file_dest = "../task1/images/original/".$file_name;
 				$extensions = array("jpg","jpeg","png","gif");
 				if(in_array($file_ext,$extensions) === false)
 				{
@@ -94,6 +95,9 @@
       			{
       				if(move_uploaded_file($file_tmp,$file_dest))
       				{
+      					$file_src = $file_dest;
+      					make_thumb($file_src,'../task1/images/100x100/'.$file_name, 100, $file_type);
+						make_thumb($file_src,'../task1/images/600x600/'.$file_name, 600, $file_type);
       					echo "success";
       				}
       				else
@@ -192,7 +196,7 @@
 		?></span>
 		<br><br>
 		Last Name :  <input type="text" name="lname" value="<?php echo isset($lname) ? $lname : ''; ?>"/><br><br>
-		Email Id :   <input type="emailfnameErr" name="email" value="<?php echo isset($email) ? $email : ''; ?>" onkeyup="check_email(this.value)" />
+		Email Id :   <input type="emailfnameErr" name="email" value="<?php echo isset($email) ? $email : ''; ?>" onblur="check_email(this.value)" />
 		<span id="email" class="error"><?php
 		if (isset($error['email'])) {
 			echo $error['email'];
@@ -217,7 +221,7 @@
 		}
 		?></span>
 		<br><br>
-		Username : <input type="text" name="uname" value="<?php echo isset($uname) ? $uname : ''; ?>" onkeyup="check_user(this.value)"/>
+		Username : <input type="text" name="uname" value="<?php echo isset($uname) ? $uname : ''; ?>" onblur="check_user(this.value)"/>
 		<span id="uname" class="error"><?php
 		if (isset($error['uname'])) {
 			echo $error['uname'];

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Display user details</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="/css/responsive_display.css"> -->
+	<title>Display User details</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/	bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/responsive_grid.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-
 
 <?php
 
@@ -76,7 +73,7 @@
 			//echo "<div class='container'>";
 			//echo "<ul>";
 			echo "<li>";
-			echo "<img src='images/$image' width='100' height='100'><br>";
+			echo "<img src='images/100x100/$image'><br>";
 			//echo "</li>";
 			//echo "<li>";
 			echo $first_name." ".$last_name."<br>";

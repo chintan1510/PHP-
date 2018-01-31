@@ -57,7 +57,7 @@ if(mysqli_num_rows($result)>0)
 		$uname = $row['uname'];*/
 		$image = $row['photo'];
 		
-		echo "<img src='images/$image' width=571 height=698><br>";
+		echo "<img src='images/600x600/$image'><br>";
 			
 	}
 }	
@@ -80,11 +80,12 @@ if(mysqli_num_rows($result)>0)
 		$mob = $row['mob'];
 		$dob = $row['dob'];
 		$uname = $row['uname'];
+    $image = $row['photo'];
 
 	?>
 
 		<table class="table">
-    <thead>
+    <tbody>
       <tr>
       	<th>ID</th>
 
@@ -135,7 +136,11 @@ if(mysqli_num_rows($result)>0)
     	echo "<td>$uname</td>";  }	
     ?>
       </tr>
-    </thead>
+      <?php
+      echo "<td colspan='2' style='text-align: center;'><a class='btn btn-info' href='update_user_data.php?id=$id&fname=$fname&lname=$lname&email=$email&mob=$mob&dob=$dob&image=$image'>Edit</a></td>";
+      ?>
+      </tr>
+    </tbody>
 </table>
 </div>
 
