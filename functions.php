@@ -51,7 +51,9 @@ function update_user_details()
     if (empty($image_name)) {
         $image_name = $_POST['img'];
     }
-    // $image_name = uniqid().".".$file_ext;
+    else{
+        $image_name = uniqid().".".$file_ext;
+    }
     $file_dest = "../task1/images/original/".$image_name;
     if(move_uploaded_file($file_tmp,$file_dest))
                     {
@@ -66,14 +68,30 @@ function update_user_details()
                     }
                   
     
-    echo $update_user_details = "UPDATE register_user set fname = '{$fname}', lname = '{$lname}', email ='{$email}',mob = '{$mob}', dob = '{$dob}', photo ='{$image_name}' where id = $id";
+    $update_user_details = "UPDATE register_user set fname = '{$fname}', lname = '{$lname}', email ='{$email}',mob = '{$mob}', dob = '{$dob}', photo ='{$image_name}' where id = $id";
 
     $update_exe = mysqli_query($conn,$update_user_details);
     if (!$update_user_details) {
         die("Failed".mysqli_error($conn));
-    } else{
+    } 
+    else
+    {
         echo "success";
     }
+    $fetch_image = "SELECT photo from register_user where id=$id";
+    $fetch_exe = mysqli_query($conn,$fetch_image);
+    if(mysqli_num_rows($fetch_exe) > 0)
+    {
+        while($row = mysqli_fetch_assoc($fetch_exe))
+        {
+            if($_POST['img'] != $row['photo'])
+            {
+                unlink("../task1/images/original/".$_POST['img']);
+                unlink("../task1/images/100x100/".$_POST['img']);
+                unlink("../task1/images/600x600/".$_POST['img']);
+            }
+        }
+    }  
     header('Location:index2.php');
     }
 }
