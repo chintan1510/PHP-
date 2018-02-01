@@ -35,7 +35,7 @@ function update_user_details()
 {
     global $conn;
     if(isset($_POST['submit']))
-    {
+    {  
     $id = $_POST['id'];    
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];

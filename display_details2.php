@@ -24,7 +24,7 @@
     echo "<a style='float:right;margin-right:20px;' href='logout.php' >Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
     echo "<p>".$_SESSION['fname']." ".$_SESSION['lname']."</p>";	
 	}
-	$results_per_page = 6;
+	$results_per_page = 4;
 
 	// find out the number of results stored in database
 	$sql='SELECT * FROM register_user';

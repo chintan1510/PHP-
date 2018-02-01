@@ -137,7 +137,7 @@ if(mysqli_num_rows($result)>0)
     ?>
       </tr>
       <?php
-      echo "<td colspan='2' style='text-align: center;'><a class='btn btn-info' href='update_user_data.php?id=$id&fname=$fname&lname=$lname&email=$email&mob=$mob&dob=$dob&image=$image'>Edit</a></td>";
+      echo "<td colspan='2' style='text-align: center;'><a style='margin-right:5px;' class='btn btn-info' href='update_user_data.php?id=$id&fname=$fname&lname=$lname&email=$email&mob=$mob&dob=$dob&image=$image'>Edit</a><a class='btn btn-info' href='index2.php'>Back</a></td>";
       ?>
       </tr>
     </tbody>
@@ -148,7 +148,7 @@ if(mysqli_num_rows($result)>0)
 
 <?php
 
-echo "<br><br><a class='btn btn-info' href='index2.php'>Back</a>";
+
 
 }
 

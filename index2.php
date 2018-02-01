@@ -175,7 +175,7 @@ echo "<br><br>";*/
 			echo "<td>$first_name</td>";
 			echo "<td>$last_name</td>";
 			echo "<td>$email</td>";
-			echo "<td><a href='user_details.php?user=$uname' class='btn btn-info'>Other info</a></td>";
+			echo "<td><a href='user_details2.php?user=$uname' class='btn btn-info'>Other info</a></td>";
 			echo '</tr>';
 		}
 	}

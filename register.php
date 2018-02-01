@@ -20,7 +20,8 @@
 
 				'fname'	=> '',
 				'email' => '',
-				'mob'   => '',
+				'mob_empty'   => '',
+				'mob_invalid' => '',
 				'uname'	=> '',
 				'pwd'   => '',
 				'f_ext' => '',
@@ -35,19 +36,22 @@
 				$error['email'] = "Email id required";
 			}
 			if (empty($mob)) {
-				$error['mob'] = "Mobile number is required";
+				$error['mob_empty'] = "Mobile number is required";
 			}
-			if(!preg_match($regex,$mob))
+			elseif(!empty($mob))
 			{
-				$error['mob'] = "Enter a valid mobile number";
+				if(!preg_match($regex,$mob))
+			{
+				$error['mob_invalid'] = "Enter a valid mobile number";
+			}	
 			}
 			if (empty($uname)) {
 				$error['uname'] = "Username is required";
 			}
 			if (empty($pwd)) {
 				$error['pwd'] = "Password is required";
-			}
 			
+			}
 			else{
 
 
@@ -205,8 +209,12 @@
 		<br><br>
 		Mobile number : <input type="text" name="mob"/ value="<?php echo isset($mob) ? $mob : ''; ?>">
 		<span class="error"><?php
-		if (isset($error['mob'])) {
-			echo $error['mob'];
+		if (isset($error['mob_empty'])) {
+			echo $error['mob_empty'];
+		}
+		if(isset($error['mob_invalid']))
+		{
+			echo $error['mob_invalid'];
 		}
 		?></span>
 		<br><br>
@@ -216,7 +224,7 @@
 		if (isset($error['f_ext'])) {
 			echo $error['f_ext'];
 		}
-		elseif(isset($error['f_size'])) {
+		if(isset($error['f_size'])) {
 			echo $error['f_size'];
 		}
 		?></span>
