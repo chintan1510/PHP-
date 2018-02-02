@@ -20,7 +20,7 @@ function check_user(str)
 				}
 			};
 
-			xmlhttp.open("GET","checkuser.php?q="+str,true);
+			xmlhttp.open("GET","https://api.fixer.io/latest?symbols=USD,GBP",true);
 			xmlhttp.send();
 		}
 
