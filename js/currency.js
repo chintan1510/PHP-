@@ -1,4 +1,34 @@
 $(function(){
+
+	// var base, convert_into;
+
+	// $("#base").blur(function(){
+	// 	base = $(this).val();
+	// });
+
+	// $("#convert_into").blur(function(){
+	// 	convert_into = $(this).val();
+	// });
+
+
+	$("#interchange").click(function(){
+
+		var base = $("#base").val();
+		var convert_into = $("#convert_into").val();
+
+		console.log(convert_into);
+		console.log(base);
+		$("#base").val(convert_into);
+		$("#convert_into").val(base);
+
+		
+		// var temp = base;
+		// base = convert_into;
+		// convert_into = temp;
+		// $("#base").html(convert_into);
+		// console.log(base);
+		// console.log(convert_into);
+	});
 	$("#amount").keyup(function(e){
 		e.preventDefault();
 		var base = $("#base").val();
