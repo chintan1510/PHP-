@@ -1,7 +1,7 @@
 <?php 
 
 /*include "F:/xampp/htdocs/book_company/Booktype/book.php" ;*/
-include "F:/xampp/htdocs/book_company/Person/person.php";
+require_once "F:/xampp/htdocs/book_company/Person/person.php";
 
 /*namespace \book_company\People;
 use xampp\htdocs\book_company\Person\Person ;*/
