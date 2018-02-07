@@ -1,7 +1,7 @@
 <?php 
 
-include "F:/xampp/htdocs/book_company/People/author.php";
-include "F:/xampp/htdocs/book_company/People/editor.php";
+require_once "F:/xampp/htdocs/book_company/People/author.php";
+require_once "F:/xampp/htdocs/book_company/People/editor.php";
 /*include "F:/xampp/htdocs/book_company/People/illustrator.php";
 include "F:/xampp/htdocs/book_company/People/publisher.php";*/
 
