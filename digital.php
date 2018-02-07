@@ -1,6 +1,6 @@
 <?php 
 
-include "F:/xampp/htdocs/book_company/Booktype/book.php";
+require_once "F:/xampp/htdocs/book_company/Booktype/book.php";
 /*use xampp\htdocs\book_company\Booktype\Book;*/
 
 class DigitalBook extends Book
