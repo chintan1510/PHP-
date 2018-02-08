@@ -1,15 +1,11 @@
 <?php 
-
-require_once "F:/xampp/htdocs/book_company/People/author.php";
-require_once "F:/xampp/htdocs/book_company/People/editor.php";
-/*include "F:/xampp/htdocs/book_company/People/illustrator.php";
-include "F:/xampp/htdocs/book_company/People/publisher.php";*/
-
+require_once "/var/www/html/book_company/People/author.php";
+require_once "/var/www/html/book_company/People/editor.php";
+require_once "/var/www/html/book_company/People/illustrator.php";
+require_once "/var/www/html/book_company/People/publisher.php";
 /*namespace \book_company\Booktype;
-
 use xampp\htdocs\book_company\People\Author;
 use xampp\htdocs\book_company\People\Editor;*/
-
 class Book
 {
 	private $title;
@@ -20,7 +16,6 @@ class Book
 	private $editor;
 	private $illustrator;
 	private $publisher;
-
 	function __construct($title,$cost,$publ_year,$num_pages)
 	{
 		$this->title        = $title;
@@ -29,15 +24,13 @@ class Book
 		$this->num_pages    = $num_pages;
 		$this->author       = new Author("10","2");
 		$this->author       = $this->author->getAuthorDetails();
-
 		$this->editor       = new Editor("20","5",["3 mistakes of my life","Sherlock Holmes"]);
 		$this->editor       = $this->editor->getEditorDetails();
-		/*$this->illustrator  = new Illustrator("10","2");
+		$this->illustrator  = new Illustrator("10",["Adobe Photoshop","Corel Draw"]);
 		$this->illustrator  = $this->illustrator->getIllustratorDetails();
-		$this->publisher    = new Publisher("10","2");
-		$this->publisher    = $this->publisher->getPublisherDetails();*/
+		$this->publisher    = new Publisher("10","GK Publications");
+		$this->publisher    = $this->publisher->getPublisherDetails();
 	}
-
 	function getBookDetails()
 	{
 		return ["Title" => $this->title,
@@ -45,11 +38,11 @@ class Book
 				"Publication year" => $this->publ_year,
 				"Num of pages" => $this->num_pages,
 				"Author" => $this->author,
-				"Editor" => $this->editor];/*,$this->illustrator,$this->publisher*/
+				"Editor" => $this->editor,
+				"Illustrator" => $this->illustrator,
+				"Publisher"  => $this->publisher];
 	}
 }
-
 /*$book1 = new Book("Harry Potter","1000","2001","250");
 echo $book_details = $book1.getBookDetails();*/
-
 ?>

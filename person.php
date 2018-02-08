@@ -1,9 +1,7 @@
 <?php 
-
 class Person
 {
 	private $fname,$lname,$email,$mob,$address,$dob;
-
 	function __construct($fname,$lname,$email,$mob,$address,$dob)
 	{
 		$this->fname = $fname;
@@ -22,10 +20,7 @@ class Person
 	{
 		echo "test";
 	}*/
-
 }
-
 /*$user = new User("A","B","a.b@gmail.com","9892222495","ABC","10-11-92","ABCD");
 var_dump($user->getUser()); */
-
  ?>
