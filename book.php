@@ -12,16 +12,18 @@ class Book
 	private $cost;
 	private $publ_year;
 	private $num_pages;
+	private $image;
 	private $author;
 	private $editor;
 	private $illustrator;
 	private $publisher;
-	function __construct($title,$cost,$publ_year,$num_pages)
+	function __construct($title,$cost,$publ_year,$num_pages,$image)
 	{
 		$this->title        = $title;
 		$this->cost         = $cost;
 		$this->publ_year    = $publ_year;
 		$this->num_pages    = $num_pages;
+		$this->image        = $image;
 		$this->author       = new Author("10","2");
 		$this->author       = $this->author->getAuthorDetails();
 		$this->editor       = new Editor("20","5",["3 mistakes of my life","Sherlock Holmes"]);
@@ -37,6 +39,7 @@ class Book
 				"Cost" => $this->cost,
 				"Publication year" => $this->publ_year,
 				"Num of pages" => $this->num_pages,
+				"Book Image" => $this->image,
 				"Author" => $this->author,
 				"Editor" => $this->editor,
 				"Illustrator" => $this->illustrator,

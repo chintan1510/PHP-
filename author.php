@@ -5,10 +5,7 @@ require_once "/var/www/html/book_company/Person/person.php";
 use xampp\htdocs\book_company\Person\Person;*/
 class Author extends Person
 {
-	static function dir()
-	{
-	echo __DIR__ ;
-	}
+	
 	private $books_count;
 	private $publications;
 	//private $book_details;
